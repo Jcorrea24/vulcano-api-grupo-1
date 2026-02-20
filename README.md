@@ -54,9 +54,43 @@
 
 ## 📊 Diagrama de Clases del Dominio (v1)
 
+```mermaid
+classDiagram
+    class User {
+        +Long id
+        +String username
+        +String email
+        +String password
+        +register()
+        +login()
+    }
+    class Challenge {
+        +Long id
+        +String title
+        +String description
+        +String difficulty
+        +String baseCode
+        +validateSolution()
+    }
+    class Review {
+        +Long id
+        +String comment
+        +int rating
+        +createReview()
+    }
+    class AcademicProgress {
+        +Long id
+        +String status
+        +Double score
+        +Date completionDate
+        +updateProgress()
+    }
+    User "1" -- "*" Review : writes
+    User "1" -- "*" AcademicProgress : tracks
+    Challenge "1" -- "*" AcademicProgress : involves
+```
 
 
-![Diagrama de Dominio v1](docs/diagrama-dominio-v1.png)  
 *Diagrama inicial que contempla las entidades: Usuario, Reseña, Desafío y Progreso Académico.*
 
 ## 🚀 Instrucciones de Instalación y Ejecución
