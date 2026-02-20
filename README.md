@@ -51,6 +51,17 @@
 - **Base de Datos:** PostgreSQL para producción y H2 para desarrollo/pruebas locales.
 - **Control de Versiones:** Git y GitHub.
 
+**Dependencias obligatorias del proyecto (Backend):**
+
+| Dependencia | Versión | Descripción |
+| :--- | :--- | :--- |
+| `spring-boot-starter-web` | Spring Boot actual | API REST con Spring MVC |
+| `spring-boot-starter-data-jpa` | Spring Boot actual | ORM con Hibernate / Spring Data JPA |
+| `lombok` | Última estable | Reducción de boilerplate (getters, setters, constructores) |
+| `spring-boot-devtools` | Spring Boot actual | Recarga automática en desarrollo |
+| `h2` | Runtime | Base de datos en memoria para pruebas locales |
+| `postgresql` | Runtime | Driver JDBC para PostgreSQL en producción |
+
 > ⚠️ **Nota importante:** Este proyecto utiliza **Spring Data JPA** como ORM. Prisma es un ORM exclusivo del ecosistema Node.js y **no es compatible** con Spring Boot/Hibernate. Toda la gestión de datos se realiza a través de Spring Data JPA.
 
 ---
@@ -69,48 +80,51 @@
 
 ## 📊 Diagrama de Clases del Dominio (v1)
 
-```mermaid
-classDiagram
-    class User {
-        +Long id
-        +@GeneratedValue Long id
-        +String username
-        +String email
-        +String password
-        +LocalDateTime createdAt
-        +LocalDateTime updatedAt
-        +register()
-        +login()
-    }
-    class Challenge {
-        +@GeneratedValue Long id
-        +String title
-        +String description
-        +String difficulty
-        +String baseCode
-        +validateSolution()
-    }
-    class Review {
-        +@GeneratedValue Long id
-        +String comment
-        +int rating
-        +LocalDateTime createdAt
-        +LocalDateTime updatedAt
-        +createReview()
-    }
-    class AcademicProgress {
-        +@GeneratedValue Long id
-        +String status
-        +Double score
-        +Date completionDate
-        +updateProgress()
-    }
-    User "1" -- "*" Review : writes
-    User "1" -- "*" AcademicProgress : tracks
-    Challenge "1" -- "*" AcademicProgress : involves
-```
+![Diagrama de Clases del Dominio](docs/diagrama-grupo1-v1.png)
 
 *Diagrama que contempla las entidades: Usuario, Reseña, Desafío y Progreso Académico. Los IDs utilizan `@GeneratedValue` y las entidades clave incluyen atributos de auditoría `createdAt`/`updatedAt`.*
+
+> 📁 El archivo se encuentra en `docs/diagrama-dominio-v1.png`. Para regenerarlo, usa [Mermaid Live Editor](https://mermaid.live) con el siguiente código fuente:
+>
+> ```mermaid
+> classDiagram
+>     class User {
+>         +@GeneratedValue Long id
+>         +String username
+>         +String email
+>         +String password
+>         +LocalDateTime createdAt
+>         +LocalDateTime updatedAt
+>         +register()
+>         +login()
+>     }
+>     class Challenge {
+>         +@GeneratedValue Long id
+>         +String title
+>         +String description
+>         +String difficulty
+>         +String baseCode
+>         +validateSolution()
+>     }
+>     class Review {
+>         +@GeneratedValue Long id
+>         +String comment
+>         +int rating
+>         +LocalDateTime createdAt
+>         +LocalDateTime updatedAt
+>         +createReview()
+>     }
+>     class AcademicProgress {
+>         +@GeneratedValue Long id
+>         +String status
+>         +Double score
+>         +Date completionDate
+>         +updateProgress()
+>     }
+>     User "1" -- "*" Review : writes
+>     User "1" -- "*" AcademicProgress : tracks
+>     Challenge "1" -- "*" AcademicProgress : involves
+> ```
 
 ---
 
