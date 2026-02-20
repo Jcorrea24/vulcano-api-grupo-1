@@ -73,8 +73,8 @@
 | Mario Múnera | Líder / Backend | [@MarioMunera1993](https://github.com/MarioMunera1993) |
 | Albany Luciani | Frontend Lead | [@albanyluciani1](https://github.com/albanyluciani1) |
 | Roque Aldana | Backend / DB Specialist | [@Julio28012020](https://github.com/Julio28012020) |
-| Julio Correa | QA / Tester | [@Julio](https://github.com/Julio) |
-| Sergio Montoya | UI/UX Designer | [@Sergio](https://github.com/Sergio) |
+| Julio Correa | QA / Tester | [@Jcorrea24](https://github.com/Jcorrea24) |
+| Sergio Montoya | UI/UX Designer | [@SerelbochaD3773](https://github.com/SerelbochaD3773) |
 
 ---
 
