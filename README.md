@@ -147,11 +147,20 @@ O desde su IDE ejecutando: **Run → VulcanoApiApplication**.
 
 ---
 ## Estado Actual del Proyecto
+
+
 Este es el repositorio del frontend https://github.com/Jcorrea24/pi_web1.git .
+
+
 Este es el repositorio del backend https://github.com/SerelbochaD3773/VulcanBackEnd2.git.
--version 2.0-
-Documentacion inicial del Proyecto Vulcano
-Aprendizaje Interactivo a Través de la Gamificación
+
+
+**Documentacion inicial del Proyecto VulcanoApiApplication version 2.0**
+
+
+**Aprendizaje Interactivo a Través de la Gamificación**
+
+
 Vulcano App es una plataforma de gamificación educativa diseñada para hacer del aprendizaje una experiencia interactiva y divertida.
 A través de juegos y desafíos, los estudiantes consolidan los conocimientos adquiridos en el primer semestre de la carrera técnica laboral en desarrollo de software, fortaleciendo su lógica y creatividad mientras juegan.
 
