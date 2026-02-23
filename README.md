@@ -46,21 +46,21 @@
 
 ## 🛠️ Tecnologías y Herramientas (Tech Stack)
 
-- **Backend:** Java Spring Boot, Spring Data JPA / Hibernate, Maven.
+- **Backend:** Java 21, Spring Boot 4.0.2, Spring Data JPA, Maven.
 - **Frontend:** React, JavaScript (ES6+), Tailwind CSS.
-- **Base de Datos:** PostgreSQL para producción y H2 para desarrollo/pruebas locales.
-- **Control de Versiones:** Git y GitHub.
+- **Base de Datos:** PostgreSQL para producción y H2 para desarrollo local.
+- **Otras herramientas:** Git, GitHub, Postman, VScode.
 
 **Dependencias obligatorias del proyecto (Backend):**
 
 | Dependencia | Versión | Descripción |
 | :--- | :--- | :--- |
-| `spring-boot-starter-web` | Spring Boot actual | API REST con Spring MVC |
-| `spring-boot-starter-data-jpa` | Spring Boot actual | ORM con Hibernate / Spring Data JPA |
-| `lombok` | Última estable | Reducción de boilerplate (getters, setters, constructores) |
-| `spring-boot-devtools` | Spring Boot actual | Recarga automática en desarrollo |
-| `h2` | Runtime | Base de datos en memoria para pruebas locales |
-| `postgresql` | Runtime | Driver JDBC para PostgreSQL en producción |
+| `spring-boot-starter-web` | 4.0.2 | API REST con Spring MVC |
+| `spring-boot-starter-data-jpa` | 4.0.2 | ORM con Hibernate / Spring Data JPA |
+| `lombok` | managed | Reducción de boilerplate (getters, setters, constructores) |
+| `spring-boot-devtools` | 4.0.2 | Recarga automática en desarrollo |
+| `h2` | runtime | Base de datos en memoria para pruebas locales |
+| `postgresql` | runtime | Driver JDBC para PostgreSQL en producción |
 
 > ⚠️ **Nota importante:** Este proyecto utiliza **Spring Data JPA** como ORM. Prisma es un ORM exclusivo del ecosistema Node.js y **no es compatible** con Spring Boot/Hibernate. Toda la gestión de datos se realiza a través de Spring Data JPA.
 
@@ -112,27 +112,20 @@ DB_USERNAME=tu_usuario
 DB_PASSWORD=tu_contraseña
 ```
 
-Luego configura el archivo `src/main/resources/application-dev.properties` para que lea las variables de entorno:
+Luego utiliza los perfiles de Spring Boot para alternar entre configuraciones de entorno:
 
-**Opción PostgreSQL (Producción):**
+**Ejecución con Perfil de Desarrollo (H2):**
 
-```properties
-spring.datasource.url=${DB_URL}
-spring.datasource.username=${DB_USERNAME}
-spring.datasource.password=${DB_PASSWORD}
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+Configurado en `src/main/resources/application-dev.properties`. Se activa por defecto o mediante:
+```bash
+./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
 ```
 
-**Opción H2 (Pruebas locales):**
+**Ejecución con Perfil de Producción (PostgreSQL):**
 
-```properties
-spring.datasource.url=jdbc:h2:mem:testdb
-spring.datasource.driverClassName=org.h2.Driver
-spring.datasource.username=sa
-spring.datasource.password=
-spring.h2.console.enabled=true
-spring.jpa.hibernate.ddl-auto=update
+Configurado en `src/main/resources/application-prod.properties`. Requiere las variables de entorno definidas en el `.env` y se activa con:
+```bash
+./mvnw spring-boot:run -Dspring-boot.run.profiles=prod
 ```
 
 ### 4. Ejecutar la aplicación
